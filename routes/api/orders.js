@@ -14,7 +14,7 @@ router.post('/createOrder', (req, res, next) => {
         .then(() =>
         Request.post({
             "headers": { "content-type": "application/json" },
-            "url": "http://localhost:8001/api/inventory/reduceQty",
+            "url": "https://inventorymicro.herokuapp.com/api/inventory/reduceQty",
             "body": JSON.stringify(req.body)
         }, (error, response,body) => {
             if (error) {
@@ -35,7 +35,7 @@ router.post('/cancelOrder',(req,res,next)=>{
     return Orders.findOneAndDelete({productId}).then((data)=>
     Request.post({
         "headers": { "content-type": "application/json" },
-        "url": "http://localhost:8001/api/inventory/addQty",
+        "url": "https://inventorymicro.herokuapp.com/api/inventory/addQty",
         "body": JSON.stringify(req.body)
     }, (error, response,body) => {
         if (error) {
